@@ -1,0 +1,484 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP5Cbmiwk1DDtO3VA/Mi7CV",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Marudhan/Basic-Python/blob/main/Cheat%20Sheet\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "XWDZaiFN_JRt"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd\n",
+        "from tabulate import tabulate\n",
+        "import traceback\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "from requests import get\n",
+        "import requests\n",
+        "import os"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# empty list\n",
+        "lst_names = []\n",
+        "# list with some string values in it\n",
+        "lst_cities = [\"Bangalore\", \"Chennai\", \"SFO\", \"Beijing\"]\n",
+        "# append to existing list\n",
+        "lst_cities.append(\"NYC\")\n",
+        "# list with some integer values\n",
+        "lst_age = [10, 20]\n",
+        "# append an integer to the existing list\n",
+        "lst_age.append(30)\n",
+        "# iterate each value in a list\n",
+        "for val in lst_cities:\n",
+        " print(val)\n",
+        "# check if a value exists in a list\n",
+        "if \"SFO\" in lst_cities:\n",
+        " print(\"yes\")\n",
+        "else:\n",
+        " print(\"no\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6Jtxl8cy_RNz",
+        "outputId": "2fc2f2ee-8909-4968-d651-dae93399b6fe"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Bangalore\n",
+            "Chennai\n",
+            "SFO\n",
+            "Beijing\n",
+            "NYC\n",
+            "yes\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lst_pets = [\"dog\", \"cat\"]\n",
+        "for i, value in enumerate(lst_pets):\n",
+        " print(f\"At index {i}, the value in the list is {value}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "YVpdkjns_Ss4",
+        "outputId": "98ada22c-2536-4f10-fad0-009e25b353de"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "At index 0, the value in the list is dog\n",
+            "At index 1, the value in the list is cat\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# empty set\n",
+        "set_names = ()\n",
+        "# Set with some string values in it\n",
+        "set_cities = [\"Bangalore\", \"Chennai\", \"SFO\", \"Beijing\"]\n",
+        "# append to existing list\n",
+        "set_cities.append(\"NYC\")\n",
+        "# list with some integer values\n",
+        "set_age = [10, 20]\n",
+        "# append an integer to the existing list\n",
+        "set_age.append(30)\n",
+        "print(set_cities)\n",
+        "print(set_age)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VA-z1ZK6_Umr",
+        "outputId": "d9c459e3-f6f0-42b5-f5b0-74a7adafcf0b"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Bangalore', 'Chennai', 'SFO', 'Beijing', 'NYC']\n",
+            "[10, 20, 30]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# declare dictionary\n",
+        "dict_data = {}\n",
+        "# insert a empty list into the dictionary\n",
+        "dict_data['pet'] = []\n",
+        "# append/add a list of dict to the list\n",
+        "dict_data['pet'].append({\n",
+        "   'name': 'Dog',\n",
+        "   'website': 'dog.com',\n",
+        "   'from': 'San Francisco'\n",
+        "})\n",
+        "dict_data['pet'].append({\n",
+        "   'name': 'Cat',\n",
+        "   'website': 'hellokitty.com',\n",
+        "   'from': 'Seattle'\n",
+        "})"
+      ],
+      "metadata": {
+        "id": "wBkVtake_aEK"
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "Number of rows in a dataframe\n",
+        "len(df)\n",
+        "# list having different pet types\n",
+        "lst_pet_types = [\"cat\", \"dog\", \"horse\"]\n",
+        "# returns number of elements in the list\n",
+        "c_pet_types = len(lst_pet_types)\n",
+        "# prints 3\n",
+        "print(f\"# pet types: {c_pet_types}\")\n",
+        "# Using len() for dictionary\n",
+        "dict_pets = {\"name\": \"dog\", \"age\": 2}\n",
+        "# returns number of keys in the dictionary\n",
+        "c_pets = len(dict_pets)\n",
+        "# prints 2\n",
+        "print(f\"# pets: {c_pets}\")\n",
+        "dict_pets = {\"pets\": [{\"name\": \"dog\", \"age\": 2}, {\"name\": \"dog\", \"age\": 2}]}\n",
+        "dict_p_h = {\"pets\": [{\"name\": \"dog\", \"age\": 2}, {\"name\": \"dog\", \"age\": 2}],\n",
+        "           \"persons\": [{\"name\": \"ram\", \"age\": 12}, {\"name\": \"kumaran\", \"age\": 11}]}\n",
+        "# returns number of keys in the dictionary\n",
+        "c_pets, c_humans = len(dict_pets), len(dict_p_h)\n",
+        "# prints 1\n",
+        "print(f\"# pets: {c_pets} ; # humans: {c_humans}\")\n",
+        "# get only keys from the dictionary\n",
+        "lst_keys = [*dict_p_h]\n",
+        "# get only values from the dictionary\n",
+        "lst_values = [*dict_p_h.values()]\n",
+        "# prints\n",
+        "print(f\"# keys: {len(lst_keys)} | # values: {len(lst_values)}\")\n",
+        "print(f\"keys: {lst_keys} | values: {lst_values}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 110
+        },
+        "id": "bsSjPSKr_cLq",
+        "outputId": "b8c3a259-ce4d-418e-ec92-c92fd3b27d06"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "invalid syntax (<ipython-input-8-b9cd154cc63f>, line 1)",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-8-b9cd154cc63f>\"\u001b[0;36m, line \u001b[0;32m1\u001b[0m\n\u001b[0;31m    Number of rows in a dataframe\u001b[0m\n\u001b[0m           ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.columns = ['a', 'b']"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 146
+        },
+        "id": "f2zfP1kh_ff9",
+        "outputId": "e6f19f7f-c91d-4dcc-d520-d6353175ebc1"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'df' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-10-d9df950c972e>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcolumns\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0;34m'a'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'b'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'df' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = df.drop(columns=['column_nameA', 'column_nameB'])"
+      ],
+      "metadata": {
+        "id": "TQ5t8lrw_iuT"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "txt = \" \tMoscow \t\"\n",
+        "str_clean = txt.strip()\n",
+        "print(f\"From weather report, {str_clean} is too cold most of the times\")"
+      ],
+      "metadata": {
+        "id": "dEgtugm__mo_"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lst_items = ['rambo','dog','chennai']\n",
+        "# joins elements of lst_items by delimiter ','\n",
+        "str = ','.join(lst_items)\n",
+        "# prints -> rambo,dog,chennai\n",
+        "print(str)"
+      ],
+      "metadata": {
+        "id": "PxCn9KyG_oqh"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# input file path\n",
+        "in_file = \"\"\n",
+        "# read  csv\n",
+        "df = pd.read_csv(in_file)"
+      ],
+      "metadata": {
+        "id": "ZOTuh3AJ_pmq"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(df.head(10))"
+      ],
+      "metadata": {
+        "id": "-wi3iDa0_tZp"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.shape"
+      ],
+      "metadata": {
+        "id": "ed4uyz7u_wts"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(list(df))"
+      ],
+      "metadata": {
+        "id": "m41A3EkC_0BC"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.dtypes"
+      ],
+      "metadata": {
+        "id": "rs8-bXft_1BF"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.describe(include='all')"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 146
+        },
+        "id": "azb9Xu6w_2rj",
+        "outputId": "a1f2a8f0-e5f5-4f5a-c8f8-18c23d1ce7f2"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'df' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-12-174ba9bf1a5c>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdescribe\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0minclude\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m'all'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'df' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from tabulate import tabulate\n",
+        "# custom function for pretty print\n",
+        "def pretty_print(title, df, n):\n",
+        "   print(f\"\\n{title}:\")\n",
+        "   print(tabulate(df.head(n), headers=\"keys\", tablefmt=\"psql\"))"
+      ],
+      "metadata": {
+        "id": "aTyGYtvf_5Fd"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lst_age = df[\"age\"].unique()\n",
+        "# also works\n",
+        "lst_age = df.age.unique()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 182
+        },
+        "id": "w6K1-x04_6_J",
+        "outputId": "cd75fb3b-2282-4946-cfc2-3cdd82d6edd6"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'df' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-13-026f8a7480da>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mlst_age\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m\"age\"\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0munique\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0;31m# also works\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mlst_age\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdf\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mage\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0munique\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'df' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df[\"age\"].value_counts()\n",
+        "# also\n",
+        "df.groupby(\"age\").CLIENTCODE.nunique()"
+      ],
+      "metadata": {
+        "id": "HVCZlsIw__vC"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = {'state':[\"CA\",\"CA\",\"TX\",\"NC\", \"SC\"],'deaths':[6,11,4,5,9]}\n",
+        "df = pd.DataFrame(data)\n",
+        "# how many unique death counts are under each of the state\n",
+        "df2 = df.groupby('state')['deaths']\n",
+        "        .nunique()\n",
+        "        .to_frame('deaths')\n",
+        "        .reset_index()\n",
+        "df2.head(10)"
+      ],
+      "metadata": {
+        "id": "StXjo6TbAG3f"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# input file\n",
+        "file_name = 'openpowerlifting-2021-12-10-b420db66.csv'\n",
+        "# read csv file\n",
+        "df_in_power = pd.read_csv(file_name)\n",
+        "# men only\n",
+        "df_state_male = df_in_power\n",
+        "                .loc[df_in_power['Sex'] == \"M\"]\\\n",
+        "                .groupby(['State'])\\\n",
+        "                .size()\\\n",
+        "                .to_frame('count')\\\n",
+        "                .reset_index()\n",
+        "# sort by count\n",
+        "df_sorted = df_state_male\\\n",
+        "                .sort_values(by=['count'], ascending=False)"
+      ],
+      "metadata": {
+        "id": "x1nnfbndAH7l"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
